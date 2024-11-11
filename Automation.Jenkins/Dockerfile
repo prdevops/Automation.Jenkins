@@ -1,14 +1,16 @@
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS build-env
 
 WORKDIR /app
+COPY *.csproj .
+
+RUN dotnet restore
 COPY . .
 
 RUN dotnet publish -c Release --property:PublishDir=/out
 
-#Runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 
 WORKDIR /app
-COPY --from=build-env /out .
+COPY --from=build-env /app/out .
 
-ENTRYPOINT dotnet Automation.Jenkins.dll
+ENTRYPOINT ["dotnet", "Automation.Jenkins.dll"]
