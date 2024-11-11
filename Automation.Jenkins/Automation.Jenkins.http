@@ -1,0 +1,6 @@
+@Automation.Jenkins_HostAddress = http://localhost:5067
+
+GET {{Automation.Jenkins_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
