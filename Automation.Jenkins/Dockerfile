@@ -15,7 +15,7 @@ FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 
 
-#COPY --from=build-env /out .
-COPY --from=build-env /out ./
+#COPY --from=build-env /out ./
+COPY --from=build-env /out .
 
 ENTRYPOINT ["dotnet", "Automation.Jenkins.dll"]
