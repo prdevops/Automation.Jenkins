@@ -22,6 +22,12 @@ namespace Automation.Jenkins.Controllers
                 Summaries[Random.Shared.Next(Summaries.Length)]
             ))
             .ToArray();
+        } 
+        
+        [HttpGet]
+        public string GetItem()
+        {
+            return "Tested";
         }
     }
 
