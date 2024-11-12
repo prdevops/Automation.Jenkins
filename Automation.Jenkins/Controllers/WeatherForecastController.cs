@@ -27,7 +27,7 @@ namespace Automation.Jenkins.Controllers
         [HttpGet]
         public string GetItem()
         {
-            return "Tested 01:30";
+            return "Tested 02:03";
         }
     }
 
