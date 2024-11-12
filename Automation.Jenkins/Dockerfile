@@ -1,24 +1,25 @@
-# Build stage
+# Стадия сборки
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build-env
 WORKDIR /app
 
-# Copy the project file and restore dependencies
+# Установка конфигурации сборки (по умолчанию - Release)
+ARG BUILD_CONFIGURATION=Release
+
+# Копирование файла проекта и восстановление зависимостей
 COPY *.csproj ./
 RUN dotnet restore
 
-# Copy the rest of the application files
+# Копирование всех остальных файлов и публикация
 COPY . ./
+RUN dotnet publish --no-restore -c $BUILD_CONFIGURATION -o /out
 
-# Команда RUN dotnet publish --no-restore -c Release -o /out внутри Dockerfile гарантирует, 
-#что приложение будет публиковаться каждый раз в процессе сборки.
-RUN dotnet publish --no-restore -c Release -o /out
-
-# Runtime stage
+# Стадия выполнения
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
+
 WORKDIR /app
 
-# Copy the published output from the build stage
+# Копирование опубликованных файлов из стадии сборки
 COPY --from=build-env /out ./
 
-# Set the entry point to the application DLL
+# Установка точки входа для запуска приложения
 ENTRYPOINT ["dotnet", "Automation.Jenkins.dll"]
