@@ -21,8 +21,7 @@ namespace Automation.Jenkins.Controllers
                 DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
                 Random.Shared.Next(-20, 55),
                 Summaries[Random.Shared.Next(Summaries.Length)]
-            ))
-            .ToArray();
+            )).ToArray();
         } 
         
 
