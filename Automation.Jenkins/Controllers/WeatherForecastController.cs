@@ -29,7 +29,7 @@ namespace Automation.Jenkins.Controllers
         [HttpGet]
         public string GetItem()
         {
-            return "Tested 02:03";
+            return $"{DateTime.Now.ToString("dd-MM-yyyy mm:HH:ss")}";
         }
     }
 
