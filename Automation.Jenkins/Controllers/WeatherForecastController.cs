@@ -22,13 +22,6 @@ namespace Automation.Jenkins.Controllers
                 Random.Shared.Next(-20, 55),
                 Summaries[Random.Shared.Next(Summaries.Length)]
             )).ToArray();
-        } 
-        
-
-        [HttpGet]
-        public string GetItem()
-        {
-            return $"Time : {DateTime.Now.ToString("dd-MM-yyyy mm:HH:ss")}";
         }
     }
 
