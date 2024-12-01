@@ -12,7 +12,6 @@ namespace Automation.Jenkins.Controllers
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
-
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
@@ -24,7 +23,6 @@ namespace Automation.Jenkins.Controllers
             )).ToArray();
         }
     }
-
 
     public record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
     {
