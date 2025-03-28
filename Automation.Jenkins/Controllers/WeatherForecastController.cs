@@ -23,13 +23,6 @@ namespace Automation.Jenkins.Controllers
             ))
             .ToArray();
         } 
-        
-        [HttpGet]
-        public string GetItem()
-        {
-            return "Tested";
-        }
-
     }
 
     public record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
